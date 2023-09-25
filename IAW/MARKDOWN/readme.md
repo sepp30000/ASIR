@@ -101,15 +101,15 @@ footer {
 
 - Comprobamos las ramas creadas
 
-![alt text](/Imagenes/ver_ramas.png)
+![alt text](Imagenes/ver_ramas.png)
 
 - Modificamos el fichero desde nuestra rama, lo unimos a la rama principal y lo volvemos a subir a **github**
 
-![alt text](/Imagenes/css_modificado.png)
+![alt text](Imagenes/css_modificado.png)
 
 - El compañero después de modificar el ***css*** lo desde su rama, lo une con la rama principal con el fin de hacer un push (tendrá un problema ya que el tiene una versión anterior de la rama main, por lo tanto le marcará un error a la hora de subir al main)
 
-![alt text](/Imagenes/fallo_push.png)
+![alt text](Imagenes/fallo_push.png)
 
 ---
 
@@ -121,10 +121,10 @@ footer {
 
 - Hacemos un **git pull** de main, esto hará un merge con el fin de solucionar el problema anterior y  poder subir nuestra versión modificada a github
 
-![alt text](/Imagenes/git_pull.png)
+![alt text](Imagenes/git_pull.png)
 
 - Despues de esto tenemos que tener claro que hay que cuando se trabaje en equipo hay que tener constante comunicación e ir con cuidado a la hora de hacer merge a la rama principal.
 
 Aquí enlazaremos con el markdown auxiliar en el que hemos hecho pruebas.
 
-[Pruebas markdown 2](/pruebas.md)
+[Pruebas markdown 2](pruebas.md)
