@@ -44,7 +44,7 @@ else:
         #If de numero par
         destino = "/home/sepp/investigacion/sospechosos/"
         if n_archivo % 2 == 0:
-            shutil.copy(archivo, destino)
+            shutil.move(archivo, destino)
             print(archivo+" es sospechoso")
         else:
             print(archivo+" no es sospechoso")
