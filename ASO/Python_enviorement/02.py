@@ -34,10 +34,10 @@ else:
 
         # Creacion de archivo
         archivo = os.path.join(f_investigados, f"{nombre}.tkn")
-        with open(archivo,'x') as sospechosos:
+        with open(archivo,'x') as investigados:
             #Insercion del numero aleatorio
             num = random.randint(1, 6)
-            sospechosos.write(str(num))
+            investigados.write(str(num))
         #Abrir archivo
         with open(archivo, 'r') as sospechosos:
             n_archivo = int(sospechosos.read())
