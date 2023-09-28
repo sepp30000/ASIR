@@ -134,4 +134,43 @@ docker run -it --name=ubuntunano2 ubuntu
 
 ## 4. Crea un contenedor demonio con un servidor nginx, usando la imagen oficial de nginx. Al crear el contenedor, ¿has tenido que indicar algún comando para que lo ejecute? Accede al navegador web y comprueba que el servidor esta funcionando. Muestra los logs del contenedor
 
+- Lo primero que haremos será buscar en **dockerhub** la imagen de *nginx*.
+
+![alt text](/IAW/DOCKER/Imagenes/dockerhub.png)
+
+- Después de encontrar la imagen que querermos la volcamos desde dockerhub a nuestro sistema
+
+![alt text](/IAW/DOCKER/Imagenes/pull_nginx.png)
+
+- Después de volcarnos la imagen, creamos el contenedor
+
+```bash
+docker run --name=nginxprueba -d -p 8080:80 nginx 
+docker ps
+```
+
+![alt text](/IAW/DOCKER/Imagenes/docker_start_nginx.png)
+
+- Ahora probaremos el funcionamiento del *nginx*
+
+![alt text](/IAW/DOCKER/Imagenes/welcome_nginx.png)
+
+- Y mostramos los logs
+
+```bash
+docker logs nginxprueba
+```
+
+![alt text](/IAW/DOCKER/Imagenes/logs_nginx.png)
+
 ## 5. Crea un contenedor con la aplicación Nextcloud, mirando la documentación en docker Hub, para personalizar el nombre de la base de datos sqlite que va a utilizar
+
+- Lo primero que haremos será buscar en **dockerhub** la imagen de *Nextcloud*.
+
+![alt text](/IAW/DOCKER/Imagenes/nextcloud.png)
+
+- Después de encontrar la imagen que querermos la volcamos desde dockerhub a nuestro sistema
+
+![alt text](/IAW/DOCKER/Imagenes/pull_nextcloud.png)
+
+# Busca en la guia el docker compose
