@@ -32,7 +32,7 @@ sudo usermod -aG docker $USUARIO
 
 ---
 
-## 2. Ejecuta un contenedor a partir de la imagen hello-word. Comprueba que nos devuelve la salida adecuada. Comprueba que no se está ejecutando. Lista los contenedores que están parado. Borra el contenedor.
+## 2. Ejecuta un contenedor a partir de la imagen hello-word. Comprueba que nos devuelve la salida adecuada. Comprueba que no se está ejecutando. Lista los contenedores que están parado. Borra el contenedor
 
 - Lo primero que haremos será crear el contenedor para **"hello-world"**
 
@@ -80,7 +80,7 @@ docker rm $id
 
 ## 3. Crea un contenedor interactivo desde una imagen debian. Instala un paquete (por ejemplo nano). Sal de la terminal, ¿sigue el contenedor corriendo? ¿Por qué?. Vuelve a iniciar el contenedor y accede de nuevo a él de forma interactiva. ¿Sigue instalado el nano?. Sal del contenedor, y bórralo. Crea un nuevo contenedor interactivo desde la misma imagen. ¿Tiene el nano instalado?
 
-- Lo primero que hacemos es crear el contenedor de *debian o ubuntu* 
+- Lo primero que hacemos es crear el contenedor de *debian o ubuntu*
 
 ```bash
 docker run -it --name=ubuntunano ubuntu 
@@ -88,7 +88,7 @@ docker run -it --name=ubuntunano ubuntu
 
 ![alt text](/IAW/DOCKER/Imagenes/creacion_ubuntu.png)
 
-- Después lo iniciamos 
+- Después lo iniciamos
 
 ```bash
 docker start -ai ubuntunano
@@ -169,8 +169,18 @@ docker logs nginxprueba
 
 ![alt text](/IAW/DOCKER/Imagenes/nextcloud.png)
 
-- Después de encontrar la imagen que querermos la volcamos desde dockerhub a nuestro sistema
+- Después de encontrarlo, crearemos un archivo ***yaml*** para configuración del contenedor. Aquí vemos que existe el apartado *MYSQL_DATABASE* donde podemos cambiar el nombre de la base de datos.
 
-![alt text](/IAW/DOCKER/Imagenes/pull_nextcloud.png)
+![alt text](/IAW/DOCKER/Imagenes/docker_compose.png)
 
-# Busca en la guia el docker compose
+- Realizamos el comando de docker compose con el fin de crear el contenedor <u>(Tenemos que tener instalado docker compose)</u>
+
+```bash
+docker-compose up -d
+```
+
+![alt text](/IAW/DOCKER/Imagenes/docker_imagenes_nextcloud.png)
+
+- Y después de entramos a **localhost:8080**, configuramos lo que nos pide la app. Y ya tendríamos el nextcloud configurado.
+
+![alt text](/IAW/DOCKER/Imagenes/nextcloud_inicio.png)
