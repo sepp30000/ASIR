@@ -119,7 +119,7 @@ footer {
 
 ### 6. Git pull para sobrescribir
 
-- Hacemos un **git pull** de main, esto hará un merge con el fin de solucionar el problema anterior y  poder subir nuestra versión modificada a github
+- Hacemos un **git pull** de main, esto hará un merge con el fin de solucionar el problema anterior y  poder subir nuestra <u>versión modificada a github</u>
 
 ![alt text](Imagenes/git_pull.png)
 
