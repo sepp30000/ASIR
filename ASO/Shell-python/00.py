@@ -1,15 +1,18 @@
 #!/usr/bin/python
 
 import sys
-import os
+import netifaces
+import json
 
-# Vamos a abrir el archivo passwd y shadow
+lista_interfaces = netifaces.interfaces()
 
-print("Recorremos el fichero /etc/passwd")
-
-passwd = open("/etc/passwd","r")
-shadow = open("/etc/shadow","r")
-
-numLinea = 0
-#Bucle que lee linea por linea los dos archivos
-#_s y _p diferencia entre shadow y passwd
+for inter in lista_interfaces:
+    print(f"Nombre de interfaz: {inter}")
+    addrs = netifaces.ifaddresses(inter)
+    
+    if netifaces.AF_INET in addrs:
+        for addr_info in addrs[netifaces.AF_INET]:
+            ip = addr_info['addr']
+            print(f"Dirección IP: {ip}")
+    else:
+        print("No se encontraron direcciones IP para esta interfaz")

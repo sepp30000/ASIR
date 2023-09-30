@@ -21,3 +21,8 @@ for linea in passwd:
         uid_p = str(linea_p[3].strip())
         usuario = str(linea_p[0].strip())
         print ("El usuario con la "+uid_p+" es: "+usuario)    
+
+passwd.close()
+
+
+sys.exit(0)
