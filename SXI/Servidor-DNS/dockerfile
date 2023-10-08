@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 # Instalamos los archivos necesarios
 RUN apt update && apt upgrade && apt install bind9 bind9-utils nano
