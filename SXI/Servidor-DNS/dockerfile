@@ -1,6 +1,28 @@
 FROM ubuntu:22.04
 
 # Instalamos los archivos necesarios
-RUN apt update && apt upgrade && apt install bind9 bind9-utils nano
+RUN apt update \
+  && apt install -y \
+  bind9 \
+  bind9-doc \
+  dnsutils \
+  nano \
+  geoip-bin \
+  mariadb-server \
+  net-tools
 
-# Le damos permiso dentro del firmware
+
+# Copiamos los archivos de configuración
+
+COPY /named.conf.options /etc/bind/
+COPY /named.conf.local /etc/bind/
+COPY /db.zona-pruebas.io /etc/bind/zones/
+
+# Exponemos los puertos
+
+EXPOSE 53/tcp
+EXPOSE 53/udp
+EXPOSE 953/tcp
+
+# Arrancamos el servicio
+CMD ["/usr/sbin/named", "-g", "-c", "/etc/bind/named.conf", "-u", "bind"]

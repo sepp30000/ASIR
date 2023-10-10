@@ -51,8 +51,7 @@ maxsize 2G;
 
 ## Creacion de tablas
 
-
-- Ahora crearemos todas las tablas de la bbdd modificandola para **Oracle**.
+- Ahora crearemos todas las tablas de la bbdd modificandola para **Oracle**. Usará la siguiente estructura:
 
 ---
 
@@ -75,7 +74,11 @@ INSERT INTO t_alimento (nombre_alimento, tipo_alimento, coste, od_alimento, calo
 INSERT INTO t_alimento (nombre_alimento, tipo_alimento, coste, od_alimento, calorias) VALUES ('pienso', 'pienso', 0.15, 'mezcla de granos', 500.00);
 INSERT INTO t_alimento (nombre_alimento, tipo_alimento, coste, od_alimento, calorias) VALUES ('soja', 'grano', 0.50, 'grano entero', 250.00);
 INSERT INTO t_alimento (nombre_alimento, tipo_alimento, coste, od_alimento, calorias) VALUES ('trigo', 'grano', 0.30, 'grano selecto', 300.00);
-
-//Tabla t_alimento_dieta_toma
-
 ```
+
+## Creación de usuarios y roles
+
+![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/Creacion%20usuarios.png)
+![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/admin_hospital.png)
+![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/rol_select.png)
+![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/rolausuario.png)

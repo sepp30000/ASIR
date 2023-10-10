@@ -188,20 +188,20 @@ INSERT INTO `medicamento` (`id_medicamento`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `medicamento_sintoma`
+-- Estructura de tabla para la tabla `medicamento_sTOMA`
 --
 
-CREATE TABLE `medicamento_sintoma` (
-  `id_sintoma` int(5) NOT NULL,
+CREATE TABLE `medicamento_sTOMA` (
+  `id_sTOMA` int(5) NOT NULL,
   `id_medicamento` int(5) NOT NULL,
   `dosis_diaria` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `medicamento_sintoma`
+-- Volcado de datos para la tabla `medicamento_sTOMA`
 --
 
-INSERT INTO `medicamento_sintoma` (`id_sintoma`, `id_medicamento`, `dosis_diaria`) VALUES
+INSERT INTO `medicamento_sTOMA` (`id_sTOMA`, `id_medicamento`, `dosis_diaria`) VALUES
 (1, 1, 1),
 (2, 1, 1),
 (3, 1, 1),
@@ -294,20 +294,20 @@ INSERT INTO `paciente_medicamento_tratamiento` (`id_paciente`, `id_medicamento`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sintoma`
+-- Estructura de tabla para la tabla `sTOMA`
 --
 
-CREATE TABLE `sintoma` (
-  `id_sintoma` int(5) NOT NULL,
+CREATE TABLE `sTOMA` (
+  `id_sTOMA` int(5) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
   `id_diagnostico` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `sintoma`
+-- Volcado de datos para la tabla `sTOMA`
 --
 
-INSERT INTO `sintoma` (`id_sintoma`, `descripcion`, `id_diagnostico`) VALUES
+INSERT INTO `sTOMA` (`id_sTOMA`, `descripcion`, `id_diagnostico`) VALUES
 (1, 'Moqueo', 1),
 (2, 'Ronchas en la piel', 2),
 (3, 'Estornudos', 3),
@@ -405,10 +405,10 @@ ALTER TABLE `medicamento`
   ADD PRIMARY KEY (`id_medicamento`);
 
 --
--- Indices de la tabla `medicamento_sintoma`
+-- Indices de la tabla `medicamento_sTOMA`
 --
-ALTER TABLE `medicamento_sintoma`
-  ADD PRIMARY KEY (`id_sintoma`,`id_medicamento`),
+ALTER TABLE `medicamento_sTOMA`
+  ADD PRIMARY KEY (`id_sTOMA`,`id_medicamento`),
   ADD KEY `Fk_medicsint_medicamento` (`id_medicamento`);
 
 --
@@ -428,11 +428,11 @@ ALTER TABLE `paciente_medicamento_tratamiento`
   ADD KEY `Fk_pacmedtrat_medicamento` (`id_medicamento`);
 
 --
--- Indices de la tabla `sintoma`
+-- Indices de la tabla `sTOMA`
 --
-ALTER TABLE `sintoma`
-  ADD PRIMARY KEY (`id_sintoma`),
-  ADD KEY `Fk_sintoma_diagnostico` (`id_diagnostico`);
+ALTER TABLE `sTOMA`
+  ADD PRIMARY KEY (`id_sTOMA`),
+  ADD KEY `Fk_sTOMA_diagnostico` (`id_diagnostico`);
 
 --
 -- Indices de la tabla `via`
@@ -458,11 +458,11 @@ ALTER TABLE `diagnostico`
   ADD CONSTRAINT `Fk_diagnostico_consulta` FOREIGN KEY (`consulta_id`) REFERENCES `consulta` (`id_consulta`);
 
 --
--- Filtros para la tabla `medicamento_sintoma`
+-- Filtros para la tabla `medicamento_sTOMA`
 --
-ALTER TABLE `medicamento_sintoma`
+ALTER TABLE `medicamento_sTOMA`
   ADD CONSTRAINT `Fk_medicsint_medicamento` FOREIGN KEY (`id_medicamento`) REFERENCES `medicamento` (`id_medicamento`),
-  ADD CONSTRAINT `Fk_medicsint_sintoma` FOREIGN KEY (`id_sintoma`) REFERENCES `sintoma` (`id_sintoma`);
+  ADD CONSTRAINT `Fk_medicsint_sTOMA` FOREIGN KEY (`id_sTOMA`) REFERENCES `sTOMA` (`id_sTOMA`);
 
 --
 -- Filtros para la tabla `paciente`
@@ -479,10 +479,10 @@ ALTER TABLE `paciente_medicamento_tratamiento`
   ADD CONSTRAINT `Fk_pacmedtrat_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id_paciente`);
 
 --
--- Filtros para la tabla `sintoma`
+-- Filtros para la tabla `sTOMA`
 --
-ALTER TABLE `sintoma`
-  ADD CONSTRAINT `Fk_sintoma_diagnostico` FOREIGN KEY (`id_diagnostico`) REFERENCES `diagnostico` (`id_diagnostico`);
+ALTER TABLE `sTOMA`
+  ADD CONSTRAINT `Fk_sTOMA_diagnostico` FOREIGN KEY (`id_diagnostico`) REFERENCES `diagnostico` (`id_diagnostico`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

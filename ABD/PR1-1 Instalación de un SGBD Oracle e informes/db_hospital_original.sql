@@ -79,11 +79,11 @@ FOREIGN KEY (consulta_id)
 REFERENCES consulta(id_consulta)
 );
 
-CREATE TABLE sintoma(
-id_sintoma INT(5) PRIMARY KEY,
+CREATE TABLE sTOMA(
+id_sTOMA INT(5) PRIMARY KEY,
 descripcion VARCHAR(200) NOT NULL,
 id_diagnostico INT(5) NOT NULL,
-CONSTRAINT Fk_sintoma_diagnostico
+CONSTRAINT Fk_sTOMA_diagnostico
 FOREIGN KEY (id_diagnostico)
 REFERENCES diagnostico(id_diagnostico)
 );
@@ -106,17 +106,17 @@ FOREIGN KEY (id_medicamento)
 REFERENCES medicamento(id_medicamento)
 );
 
-CREATE TABLE medicamento_sintoma(
-id_sintoma INT(5) NOT NULL,
+CREATE TABLE medicamento_sTOMA(
+id_sTOMA INT(5) NOT NULL,
 id_medicamento INT(5) NOT NULL,
 dosis_diaria FLOAT NOT NULL,
-PRIMARY KEY(id_sintoma,id_medicamento),
+PRIMARY KEY(id_sTOMA,id_medicamento),
 CONSTRAINT Fk_medicsint_medicamento
 FOREIGN KEY (id_medicamento)
 REFERENCES medicamento(id_medicamento),
-CONSTRAINT Fk_medicsint_sintoma
-FOREIGN KEY (id_sintoma)
-REFERENCES sintoma(id_sintoma)
+CONSTRAINT Fk_medicsint_sTOMA
+FOREIGN KEY (id_sTOMA)
+REFERENCES sTOMA(id_sTOMA)
 );
 
 
