@@ -5,23 +5,23 @@
 
 - Vamos a la web de **oracle** y después de registrarnos, descargamos e instalamos los dos programas.
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/Instalación.png)
+![alt image](./Imagenes/Instalación.png)
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/Instalacion.png)
+![alt image](./Imagenes/Instalacion.png)
 
 - Le volcamos la *contraseña* para **SYS, SYSTEM y PDBADMIN**.
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/contraseña_instalacion.png)
+![alt image](./Imagenes/contraseña_instalacion.png)
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/fin_instalacion.png)
+![alt image](./Imagenes/fin_instalacion.png)
 
 - El ***sql-developer*** es un extraible sin instalación.
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/sql_developer.png)
+![alt image](./Imagenes/sql_developer.png)
 
 - Ahora crearemos una conexión para SYS. Se realiza esta conexión para crear los *usuarios* y las *tablespaces*
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/conexión.png)
+![alt image](./Imagenes/conexión.png)
 
 ## Crea dos tablespace, uno para dieta_ganadera y otro para hospital
 
@@ -35,7 +35,7 @@ autoextend on next 10 M
 maxsize 2G;
 ```
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/ts_dietaganadera.png)
+![alt image](./Imagenes/ts_dietaganadera.png)
 
 ```sql
 create tablespace ts_hospital
@@ -45,9 +45,9 @@ autoextend on next 10 M
 maxsize 2G;
 ```
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/ts_hospital.png)
+![alt image](./Imagenes/ts_hospital.png)
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/tablespaces.png)
+![alt image](./Imagenes/tablespaces.png)
 
 ## Creacion de tablas
 
@@ -78,7 +78,7 @@ INSERT INTO t_alimento (nombre_alimento, tipo_alimento, coste, od_alimento, calo
 
 ## Creación de usuarios y roles
 
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/Creacion%20usuarios.png)
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/admin_hospital.png)
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/rol_select.png)
-![alt image](/ABD/PR1-1%20Instalación%20de%20un%20SGBD%20Oracle%20e%20informes/Imagenes/rolausuario.png)
+![alt image](./Imagenes/Creacion%20usuarios.png)
+![alt image](./Imagenes/admin_hospital.png)
+![alt image](./Imagenes/rol_select.png)
+![alt image](./Imagenes/rolausuario.png)
