@@ -23,6 +23,7 @@ def check_package_installed(Programa):
         # Ejecuta el comando dpkg para verificar si el paquete está instalado.
         subprocess.check_output(['dpkg', '-s', Programa])
         print(f'{Programa} está instalado, elimínalo antes de intentar instalarlo de nuevo.')
+        sys.exit(1)
     except subprocess.CalledProcessError:
         print(f'{Programa} no está instalado.')
 
@@ -45,3 +46,5 @@ def check_package_installed(Programa):
         subprocess.call(["dpkg", "-i", "/tmp/itaca.deb"])
 
 check_package_installed(Programa)
+
+sys.exit(0)
