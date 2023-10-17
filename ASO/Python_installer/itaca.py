@@ -4,14 +4,31 @@ import sys
 import os
 import subprocess
 
-MIRROR = "http://lliurex.net/focal"
-Programa = sys.argv[1]
+MIRROR = "http://lliurex.net"
+DISTRO = "focal"
+ARCHIVO = f"{MIRROR}/{DISTRO}/dists/focal-updates/main/binary-amd64/Packages.gz"
+N_ARCHIVO = "Packages.gz"
+# Introducir programa por parámetro de entrada
+# Programa = sys.argv[1]
+# O programa específico
+Programa = "Itaca"
 
-print ("* Welcome to the Itaca installer ")
+print("* Welcome to the Itaca installer")
 
+# Verificar si eres superusuario
 if os.geteuid() != 0:
     print("No eres root, pendejo")
     sys.exit(1)
+comando = "cat Packages | grep itaca | grep Filename | grep -v zero- | cut -d ' ' -f2"
+proceso = subprocess.Popen(comando, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+stdout, stderr = proceso.communicate()
+
+if stderr:
+    print("Error:", stderr)
+else:
+    print("Salida:", stdout)
+
 # rc = 0
 # Buscar el programa
 # dpkg = subprocess.run(['dpkg', '-l', Programa], stdout=subprocess.PIPE, text=True)
