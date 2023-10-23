@@ -191,9 +191,9 @@ async def servicio_stop(update: Update, context: CallbackContext):
     try:
         status = os.system(f'systemctl stop {servicio}')
         if status == 0:
-            respuesta = f"El servicio {servicio} está arrancado."
+            respuesta = f"El servicio {servicio} está parado."
         else:
-            respuesta = f"El servicio {servicio} no está arrancado."
+            respuesta = f"El servicio {servicio} no está parado"
     except Exception as e:
         respuesta = f"Ha habido un fallo: {str(e)}"
     await update.message.reply_text(respuesta)
