@@ -179,6 +179,7 @@ async def ip_ocupada(update: Update, context: CallbackContext):
     nm = nmap.PortScanner()
     nm.scan(hosts=ip, arguments='-n -sP -PE -PA21,23,80,3389')
     hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
+    await update.message.reply_text("Redes ocupadas:")
     for host, status in hosts_list:
         res = f'{host}:{status}'
         await update.message.reply_text(res)
