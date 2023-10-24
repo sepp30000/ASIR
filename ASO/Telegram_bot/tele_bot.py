@@ -62,7 +62,7 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                                     f"/ping + ip hace un ping a la direccion indicada \n"
                                     f"/port te muestra los puertos en uso \n"
                                     f"/ip_ocupada + red/mascara te muestra los puertos en uso \n"
-                                    f"/red te da la interfaz de red \n"
+                                    f"/mi_red te da la interfaz de red \n"
                                     f"/servicio_status + nombre_servicio te dice el estado del servicio \n"
                                     f"/servicio_start + nombre_servicio arranca el servicio si existe \n"
                                     f"/servicio_stop + nombre_servicio para el servicio si existe \n"
@@ -89,12 +89,12 @@ async def logs(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         if fallo in line:
             ultimos_errores.append(line)
         # Buscamos las ultimas 10 lineas
-        if len(ultimos_errores) > 10:
-            ultimos_errores.pop(0)
+    if len(ultimos_errores) > 10:
+        ultimos_errores.pop(0)
 
 #imprimimos las 10 ultimas lineas
-        for error in ultimos_errores:
-            await update.message.reply_text(error)
+    for error in ultimos_errores:
+        await update.message.reply_text(error)
     logs.close()
         
 
@@ -112,8 +112,8 @@ async def port(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.message.reply_text(ports)
 
 # red
-async def red(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Send a message when the command /red is issued."""
+async def mi_red(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Send a message when the command /mi_red is issued."""
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80)) 
     ip = (s.getsockname()[0])
@@ -177,7 +177,7 @@ async def ip_ocupada(update: Update, context: CallbackContext):
     """Send a message when the command /ip_ocupada is issued."""
     ip = context.args[0]
     nm = nmap.PortScanner()
-    nm.scan(hosts='ip', arguments='-n -sP -PE -PA21,23,80,3389')
+    nm.scan(hosts=ip, arguments='-n -sP -PE -PA21,23,80,3389')
     hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
     for host, status in hosts_list:
         res = f'{host}:{status}'
@@ -215,7 +215,7 @@ def main() -> None:
     application.add_handler(CommandHandler("host", host_info))
     application.add_handler(CommandHandler("ping", ping))
     application.add_handler(CommandHandler("help", help))
-    application.add_handler(CommandHandler("red", red))
+    application.add_handler(CommandHandler("mi_red", mi_red))
     application.add_handler(CommandHandler("logs", logs))
     application.add_handler(CommandHandler("port", port))
     application.add_handler(CommandHandler("servicio_status", servicio_status))
