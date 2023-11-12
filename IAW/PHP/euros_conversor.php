@@ -1,93 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Euros a ?</title>
+    <title>Conversor de Euros a Otras Monedas</title>
     <style>
-        .error {
-            color: red;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label, select, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #4CAF50;
         }
     </style>
 </head>
 <body>
-    <?php
-        // Definición de las variables
-        $cantidadErr = $yuanErr = $dolarErr = $libraErr = $yenErr = "";
-        $cantidad = $yuan = $dolar = $libra = $yen = "";
 
-        function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-
+    <div class="container">
+        <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST["cantidad"])) {
-                $cantidadErr = "Inserta un valor válido";
-            } else {
-                $cantidad = test_input($_POST["cantidad"]);
-                // Solo acepta números
-                if (!preg_match("/^\d+(\.\d+)?$/", $cantidad)) {
-                    $cantidadErr = "Solo acepta números";
-                }
-            }
-
-            if (empty($_POST["monedas"])) {
-                $yuanErr = "Selecciona una moneda";
-            } else {
-                $selectedCurrency = test_input($_POST["monedas"]);
-
-                switch ($selectedCurrency) {
-                    case "yuan":
-                        $yuan = $cantidad;
+            if (isset($_POST["cantidad"]) && isset($_POST["moneda"])) {
+                $cantidad = $_POST["cantidad"];
+                $moneda = $_POST["moneda"];
+                
+                switch ($moneda) {
+                    case "usd":
+                        $valor_convertido = $cantidad * 1.325;
+                        $moneda_nombre = "dólares USA";
                         break;
-                    case "dolar":
-                        $dolar = $cantidad;
+                    case "gbp":
+                        $valor_convertido = $cantidad * 0.927;
+                        $moneda_nombre = "libras esterlinas";
                         break;
-                    case "libra":
-                        $libra = $cantidad;
+                    case "jpy":
+                        $valor_convertido = $cantidad * 118.232;
+                        $moneda_nombre = "yenes japoneses";
                         break;
-                    case "yen":
-                        $yen = $cantidad;
+                    case "chf":
+                        $valor_convertido = $cantidad * 1.515;
+                        $moneda_nombre = "francos suizos";
                         break;
                     default:
+                        $valor_convertido = 0;
+                        $moneda_nombre = "moneda no válida";
                         break;
                 }
+                
+                echo "<h2>Resultado de Conversión</h2>";
+                echo "<p>$cantidad euros son aproximadamente $valor_convertido $moneda_nombre.</p>";
+            } else {
+                echo "<h2>Error</h2>";
+                echo "<p>Por favor, introduzca una cantidad en euros y seleccione una moneda.</p>";
             }
         }
-    ?>
+        ?>
 
-    <header>
-        <h1>Conversor euros a la moneda que elijas</h1>
-    </header>
+        <form action="" method="post">
+            <label for="cantidad">Cantidad en Euros:</label>
+            <input type="text" name="cantidad" id="cantidad" required>
+            <label for="moneda">Selecciona la moneda:</label>
+            <select name="moneda" id="moneda">
+                <option value="usd">Dólares USA</option>
+                <option value="gbp">Libras Esterlinas</option>
+                <option value="jpy">Yenes Japoneses</option>
+                <option value="chf">Francos Suizos</option>
+            </select>
+            <button type="submit">Convertir</button>
+        </form>
+        <br>
+        <a href="javascript:history.go(-1)">Volver</a>
+    </div>
 
-    <p><span class="error">* Campos requeridos</span></p>
-
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        Cantidad: <input type="text" name="cantidad" value="<?php echo $cantidad;?>">
-        <span class="error">* <?php echo $cantidadErr;?></span>
-        <br><br>
-
-        <label for="monedas">Elige una moneda:</label>
-        <select name="monedas" id="coin">
-            <option value="yuan">Yuan</option>
-            <option value="dolar">Dólares</option>
-            <option value="libra">Libras esterlinas</option>
-            <option value="yen">Yen</option>
-        </select>
-        <span class="error">* <?php echo $yuanErr;?></span>
-        <br><br>
-
-        <input type="submit" value="Convertir">
-    </form>
-    <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            echo "<h2>Tus resultados:</h2>";
-            echo "<div class='result-container'>";
-        }
-    ?>
 </body>
 </html>
