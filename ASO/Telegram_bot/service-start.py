@@ -1,7 +1,12 @@
 import os
-
+import subprocess
 # Replace 'your-service-name' with the actual service name
-service_name = 'apache2'
+ruta = "./stopuid"
+service_name = 'docker.service'
 
 # Start the service
-os.system(f'systemctl status {service_name}')
+try:
+    subprocess.Popen([ruta]+ [service_name])
+    print("La aplicación se ha abierto correctamente.")
+except Exception as e:
+    print("Error al abrir la aplicación:", e)
