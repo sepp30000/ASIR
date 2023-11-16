@@ -1,0 +1,13 @@
+options {
+    directory "/var/cache/bind";
+
+    // Configura los servidores DNS a consultar (puedes agregar tus propios servidores)
+    forwarders {
+        8.8.8.8;
+        8.8.4.4;
+    };
+
+    dnssec-validation auto;
+    auth-nxdomain no;    # no realiza la búsqueda del dominio en caso de no existir
+    listen-on-v6 { any; };
+};

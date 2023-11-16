@@ -1,4 +1,0 @@
-zone "zona-pruebas.io" {
-    type master;
-    file "/etc/bind/zones/db.zona-pruebas.io";
-};

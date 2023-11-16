@@ -1,0 +1,21 @@
+# Utiliza una imagen base de Ubuntu
+FROM ubuntu:22.04
+
+# Actualiza e instala BIND9 y otras dependencias
+RUN apt-get update && apt-get install -y bind9 bind9utils
+RUN apt purge --auto-remove && apt clean
+
+# Copia los archivos de configuración de BIND9 al contenedor
+COPY /bind/named.conf.local /etc/bind/
+COPY /bind/named.conf.options /etc/bind/
+COPY /bind/db.jose.com /etc/bind/zones/
+COPY /bind/db.valencia.jose.com /etc/bind/zones/
+COPY /bind/db.castellon.jose.com /etc/bind/zones/
+
+# Expone el puerto DNS (53)
+EXPOSE 53/tcp
+EXPOSE 53/udp
+EXPOSE 953/tcp
+
+# Inicia BIND9 al arrancar el contenedor
+CMD ["/usr/sbin/named", "-g", "-c", "/etc/bind/named.conf", "-u", "bind"]

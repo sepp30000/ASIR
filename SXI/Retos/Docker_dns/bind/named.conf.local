@@ -1,0 +1,14 @@
+zone "jose.com" {
+    type master;
+    file "/etc/bind/zones/db.jose.com";
+};
+
+zone "valencia.jose.com" {
+    type master;
+    file "/etc/bind/zones/db.valencia.jose.com";
+};
+
+zone "castellon.jose.com" {
+    type master;
+    file "/etc/bind/zones/db.castellon.jose.com";
+};

@@ -1,0 +1,19 @@
+FROM ubuntu:22.04
+
+#Instalamos
+RUN apt update && apt install -y kea-dhcp4-server
+
+#Creamos las carpetas necesarias
+RUN mkdir -p /var/run/kea
+RUN mkdir -p /var/lib/kea
+
+#Copiamos la configuración de kea
+COPY kea-dhcp4.conf /etc/kea/kea-dhcp4.conf
+
+# Abrimos los puertos del dhcp
+EXPOSE 67/udp
+EXPOSE 67/tcp
+
+#Comando de ejecución
+CMD [ "kea-dhcp4", "-c", "/etc/kea/kea-dhcp4.conf" ]
+
