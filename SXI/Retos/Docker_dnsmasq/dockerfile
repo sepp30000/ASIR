@@ -1,0 +1,12 @@
+FROM ubuntu:22.04
+
+# Instala dnsmasq
+RUN apt-get update && apt-get install -y dnsmasq
+
+# Exponer puertos: 53/tcp (DNS), 67/udp y 68/udp (DHCP)
+EXPOSE 53/udp
+EXPOSE 67/udp
+EXPOSE 68/udp
+
+# Inicia dnsmasq, escribe elementos de registro en la consola del contenedor
+ENTRYPOINT ["dnsmasq", "-k"]
