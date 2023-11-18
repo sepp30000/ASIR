@@ -8,7 +8,7 @@ if id "$nuevo_usuario" &>/dev/null; then
 	echo "El usuario no hizo falta crearlo porque ya existe."
 else
 	sudo adduser --disabled-password --gecos "" $mi_usuario
-	chmod +x /usr/bin/telebot.py
+	chmod +x /usr/bin/combot.py
 	
 fi
 

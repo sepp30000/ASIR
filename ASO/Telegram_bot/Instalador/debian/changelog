@@ -1,4 +1,9 @@
-bot-tool (0.12.11.23) jammy; urgency=high
+combot (0.12.11.23-v2) jammy; urgency=high
+
+	* Correct fixes of dependences
+
+
+combot (0.12.11.23) jammy; urgency=high
 
 	* First version
 

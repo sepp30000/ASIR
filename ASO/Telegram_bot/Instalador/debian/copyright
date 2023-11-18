@@ -1,5 +1,5 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: combot.service
+Upstream-Name: combot
 Source: https://github.com/sepp30000/ASIR/tree/main/ASO/Telegram_bot
 Copyright: Copyright 2023 José Ramón Peris <peris30000@gmail.com>
 
