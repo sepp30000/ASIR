@@ -1,0 +1,12 @@
+Source: bot-tool
+Section: utils
+Priority: optional
+Maintainer: José Ramón Peris  <peris30000@gmail.com>
+Build-Depends: debhelper (>=12), unzip
+Standards-Version: 4.5.0
+
+Package: bot-tool
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, python3-python-telegram-bot, nmap, python3-psutil
+Pre-Depends: python3-pip
+Description: Servicio de Bot-Telegram, mi hombre en la dmz.

@@ -162,12 +162,15 @@ async def servicio_status(update: Update, context: CallbackContext):
 async def servicio_start(update: Update, context: CallbackContext):
     """Send a message when the command /ping is issued."""
     servicio = context.args[0]
+    comando = "/usr/bin/start"
     try:
-        status = os.system(f'systemctl start {servicio}')
+        start = subprocess.Popen([comando, servicio])
+        start.wait()
+        status = start.returncode
         if status == 0:
-            respuesta = f"El servicio {servicio} está arrancado."
+            respuesta = f"El servicio {servicio} se inició correctamente."
         else:
-            respuesta = f"El servicio {servicio} no está arrancado."
+            respuesta = f"Error al iniciar el servicio {servicio}. Código de retorno: {status}"
     except Exception as e:
         respuesta = f"Ha habido un fallo: {str(e)}"
     await update.message.reply_text(respuesta)
@@ -189,12 +192,15 @@ async def ip_ocupada(update: Update, context: CallbackContext):
 async def servicio_stop(update: Update, context: CallbackContext):
     """Send a message when the command /ping is issued."""
     servicio = context.args[0]
+    comando = "/usr/bin/stop"
     try:
-        status = os.system(f'systemctl stop {servicio}')
+        stop = subprocess.Popen([comando, servicio])
+        stop.wait()
+        status = stop.returncode
         if status == 0:
-            respuesta = f"El servicio {servicio} está parado."
+            respuesta = f"El servicio {servicio} se paró correctamente."
         else:
-            respuesta = f"El servicio {servicio} no está parado"
+            respuesta = f"Error al iniciar el servicio {servicio}. Código de retorno: {status}"
     except Exception as e:
         respuesta = f"Ha habido un fallo: {str(e)}"
     await update.message.reply_text(respuesta)
