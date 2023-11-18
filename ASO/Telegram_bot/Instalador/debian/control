@@ -7,6 +7,5 @@ Standards-Version: 4.5.0
 
 Package: combot
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python3-python-telegram-bot, nmap, python3-psutil
-Pre-Depends: python3-pip
+Depends: ${python:Depends}, ${misc:Depends}, python3-python-telegram-bot, nmap, python3-psutil, python3-pip
 Description: Servicio de Bot-Telegram, mi hombre en la dmz.

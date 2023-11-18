@@ -7,7 +7,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=combot
-ExecStart=/usr/bin/python3 combot.py
+ExecStart=/usr/bin/python3 /usr/bin/combot.py
 
 [Install]
 WantedBy=multi-user.target
