@@ -1,12 +1,13 @@
 [Unit]
 Description=combot.service
 After=network.target
-StartLimitIntervalSec=0[Service]
+StartLimitIntervalSec=0
+[Service]
 Type=simple
 Restart=always
 RestartSec=1
 User=combot
-ExecStart=/usr/bin/python3 tele_bot.py
+ExecStart=/usr/bin/python3 combot.py
 
 [Install]
 WantedBy=multi-user.target
