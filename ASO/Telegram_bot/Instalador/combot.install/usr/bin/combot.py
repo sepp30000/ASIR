@@ -17,12 +17,12 @@ bot.
 
 import logging
 import platform
-import ping3
 import socket
 
 from telegram import ForceReply, Update
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 from telegram.ext import CallbackContext
+from ping3 import ping
 
 # Enable logging
 logging.basicConfig(
