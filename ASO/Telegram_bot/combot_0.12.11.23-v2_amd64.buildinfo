@@ -4,17 +4,17 @@ Binary: combot
 Architecture: all source
 Version: 0.12.11.23-v2
 Checksums-Md5:
- 3a84d1137b6d25038d4b5d2c475fe306 535 combot_0.12.11.23-v2.dsc
- b696135a93469c5182894c54e908f727 6996 combot_0.12.11.23-v2_all.deb
+ cc2039e36db2f7150ce287faab222712 535 combot_0.12.11.23-v2.dsc
+ 22748a24d5e52d3323f9c9d8eb21eb34 7020 combot_0.12.11.23-v2_all.deb
 Checksums-Sha1:
- 81f6f0d1136c3d61c3049c76952967ffc74b1b10 535 combot_0.12.11.23-v2.dsc
- d0076f182e53df70d7d215554691542e1b0dc18f 6996 combot_0.12.11.23-v2_all.deb
+ a2cc520f925d9a4e5c2ba900c8debfb8ace7acc0 535 combot_0.12.11.23-v2.dsc
+ 25e661073ba7b906ed599f9dcad8ebbff3034f7a 7020 combot_0.12.11.23-v2_all.deb
 Checksums-Sha256:
- 2ad2e08cec18b36f9d1eebc63e1ce458fc875dd54692ac23c923d743f78c4d86 535 combot_0.12.11.23-v2.dsc
- 7e441030470c680dc5fbc225f4c88c841a57bdd4056b1fcba8048b46dd10de46 6996 combot_0.12.11.23-v2_all.deb
+ 02efd705630d1e12647a7fd6b84bb4921146e23fe8a261442c047fdec77e7ad7 535 combot_0.12.11.23-v2.dsc
+ dc9b038ad6f569a8a7d6fd4908fa8993084b44ec9c6ab8c0dcb9f6465b1eca4d 7020 combot_0.12.11.23-v2_all.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Sat, 18 Nov 2023 20:24:36 +0000
+Build-Date: Sun, 19 Nov 2023 18:07:35 +0000
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
 Installed-Build-Depends:
@@ -179,4 +179,4 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=2"
  DEB_BUILD_PROFILES="noudeb"
  LANG="es_ES.UTF-8"
- SOURCE_DATE_EPOCH="1700339074"
+ SOURCE_DATE_EPOCH="1700417253"

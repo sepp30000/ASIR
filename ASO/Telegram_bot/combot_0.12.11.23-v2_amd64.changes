@@ -1,5 +1,5 @@
 Format: 1.8
-Date: Sat, 18 Nov 2023 20:24:36 +0000
+Date: Sun, 19 Nov 2023 18:07:35 +0000
 Source: combot
 Binary: combot
 Built-For-Profiles: noudeb
@@ -13,17 +13,17 @@ Description:
 Changes:
  combot (0.12.11.23-v2) jammy; urgency=high
 Checksums-Sha1:
- 81f6f0d1136c3d61c3049c76952967ffc74b1b10 535 combot_0.12.11.23-v2.dsc
- 728dc5b406f74cf988c6e6e5c90e34a317b6a11d 7116 combot_0.12.11.23-v2.tar.gz
- d0076f182e53df70d7d215554691542e1b0dc18f 6996 combot_0.12.11.23-v2_all.deb
- 0bc9c99f27e4f3bf41aced6f57fc83b3977b7782 5779 combot_0.12.11.23-v2_amd64.buildinfo
+ a2cc520f925d9a4e5c2ba900c8debfb8ace7acc0 535 combot_0.12.11.23-v2.dsc
+ 0de2e98f42be636cdb28c8227291a7e473681060 7213 combot_0.12.11.23-v2.tar.gz
+ 25e661073ba7b906ed599f9dcad8ebbff3034f7a 7020 combot_0.12.11.23-v2_all.deb
+ 055f39b53e197ff0ffd25ec675fc18dc2e9a5538 5779 combot_0.12.11.23-v2_amd64.buildinfo
 Checksums-Sha256:
- 2ad2e08cec18b36f9d1eebc63e1ce458fc875dd54692ac23c923d743f78c4d86 535 combot_0.12.11.23-v2.dsc
- f7007c0c6f8e5d9165bccbea87a29745fd21b090fc56d578e320332e0350fe8b 7116 combot_0.12.11.23-v2.tar.gz
- 7e441030470c680dc5fbc225f4c88c841a57bdd4056b1fcba8048b46dd10de46 6996 combot_0.12.11.23-v2_all.deb
- 4c54d4bc0c21c7dd88a91dc6e793a08a235b6918ac14aad30db26c306995aefc 5779 combot_0.12.11.23-v2_amd64.buildinfo
+ 02efd705630d1e12647a7fd6b84bb4921146e23fe8a261442c047fdec77e7ad7 535 combot_0.12.11.23-v2.dsc
+ a8adf34f68698ecc7b50f262fe5b3d69a7a3056774e2c877087170b6205e98e6 7213 combot_0.12.11.23-v2.tar.gz
+ dc9b038ad6f569a8a7d6fd4908fa8993084b44ec9c6ab8c0dcb9f6465b1eca4d 7020 combot_0.12.11.23-v2_all.deb
+ 62cfd2ebc738ef1ebde6efb0144a4acf9abc55adabfb35cb5be70865753e3a15 5779 combot_0.12.11.23-v2_amd64.buildinfo
 Files:
- 3a84d1137b6d25038d4b5d2c475fe306 535 utils optional combot_0.12.11.23-v2.dsc
- 36ad5fa814bf494be7fbf6ae4e2e0b1e 7116 utils optional combot_0.12.11.23-v2.tar.gz
- b696135a93469c5182894c54e908f727 6996 utils optional combot_0.12.11.23-v2_all.deb
- 1204de315df334aded9abf8871614449 5779 utils optional combot_0.12.11.23-v2_amd64.buildinfo
+ cc2039e36db2f7150ce287faab222712 535 utils optional combot_0.12.11.23-v2.dsc
+ ae6c53ed4bc7cf51a6a2c447a34d6d1f 7213 utils optional combot_0.12.11.23-v2.tar.gz
+ 22748a24d5e52d3323f9c9d8eb21eb34 7020 utils optional combot_0.12.11.23-v2_all.deb
+ 0349806b39562b021878f00e14d7fc46 5779 utils optional combot_0.12.11.23-v2_amd64.buildinfo

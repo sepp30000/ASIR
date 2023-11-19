@@ -9,8 +9,8 @@ Build-Depends: debhelper (>= 12), unzip
 Package-List:
  combot deb utils optional arch=all
 Checksums-Sha1:
- 728dc5b406f74cf988c6e6e5c90e34a317b6a11d 7116 combot_0.12.11.23-v2.tar.gz
+ 0de2e98f42be636cdb28c8227291a7e473681060 7213 combot_0.12.11.23-v2.tar.gz
 Checksums-Sha256:
- f7007c0c6f8e5d9165bccbea87a29745fd21b090fc56d578e320332e0350fe8b 7116 combot_0.12.11.23-v2.tar.gz
+ a8adf34f68698ecc7b50f262fe5b3d69a7a3056774e2c877087170b6205e98e6 7213 combot_0.12.11.23-v2.tar.gz
 Files:
- 36ad5fa814bf494be7fbf6ae4e2e0b1e 7116 combot_0.12.11.23-v2.tar.gz
+ ae6c53ed4bc7cf51a6a2c447a34d6d1f 7213 combot_0.12.11.23-v2.tar.gz
