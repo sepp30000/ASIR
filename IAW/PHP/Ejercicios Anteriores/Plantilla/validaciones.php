@@ -44,6 +44,7 @@
             echo "El formato del DNI no es válido.";
             exit;
         }
+        //Validar web
         if (empty($_POST["website"])) {
             $website = "";
           } else {
