@@ -18,7 +18,7 @@
     sudo iptables -L -v -n
 ```
 
-![alt image](/capturas/tablas-vacias.md)
+![alt image](capturas/tablas-vacias.png)
 
 ### 3. En otro equipo virtual Ubuntu (será "Cliente") instala el software nmap. Nos servirá para hacer escaneo de puertos y comprobar si se puede acceder a los servicios del servidor de nuestro compañero y el nuestro.
 
@@ -46,7 +46,7 @@ sudo iptables -P FORWARD ACCEPT
 
 - Nos conectamos a la ip del ordenados y accedemos a la web del apache
 
-![alt image](/capturas/Captura%20desde%202023-11-29%2010-08-56.png)
+![alt image](capturas/Captura%20desde%202023-11-29%2010-08-56.png)
 
 - Y para el ssh utilizamos 
 
@@ -56,7 +56,8 @@ sudo iptables -P FORWARD ACCEPT
 
 - Estaremos dentro
 
-![alt image](/capturas/ssh.png)
+![alt image](capturas/ssh.png)
+
 
 ### 7. Comprueba también que nmap te muestra que los puertos de los servicios web y sshd están abiertos (escuchando).
 
@@ -74,7 +75,7 @@ sudo iptables -P FORWARD ACCEPT
 
 ### 9. Desde el cliente comprueba que los puertos de los servicios ya no son accesibles y tampoco se puede acceder con los clientes web y ssh. Comprueba que tampoco puedes acceder desde el servidor en la red, haciendo un ping al cliente.
 
-![alt image](/capturas/ssh_ping_nova.png)
+![alt image](capturas/ssh_ping_nova.png)
 
 ### 10.  Permite el acceso a la máquina server solo desde la dirección IP de la máquina cliente del compañero a cualquier protocolo (recuerda, hay que activar la petición y la respuesta).
 
@@ -87,13 +88,13 @@ sudo iptables -P FORWARD ACCEPT
 
 - Con esto hemos realizado un ssh desde nuestra maquina y desde la de un compañero, el resultado es que desde 192.168.2.192 funciona el ssh y desde la ip diferente no
 
-![alt image](/capturas/ssh.png)
+![alt image](capturas/ssh.png)
 
 
 ### 11.  Comprueba que no se puede acceder por ejemplo desde nuestro cliente (ping, cliente web) a nuestro propio servidor, y un scan con nmap te dará todos los puertos cerrados. En cambio desde el cliente del compañero se tiene que poder.
 
-![alt image](/capturas/Ping_nova.png)
-![alt image](/capturas/Apachenova.png)
+![alt image](capturas/Ping_nova.png)
+![alt image](capturas/Apachenova.png)
 
 ### 12.  Permite el acceso a la máquina servidor solo a los puertos de los servicios Web (80, 443) y SSH (22), desde cualquier equipo, y prueba que ahora desde el cliente del compañero puedes acceder a los servicios web y ssh, pero que no puedes hacer un ping, por ejemplo. Comprueba también con nmap.
 
@@ -122,7 +123,7 @@ sudo iptables -P FORWARD ACCEPT
 
 - Despues de vemos que todo funciona como queremos y el nmap funciona (El puerto 443 no sale abierto porque en apache no esta habilitado el **https**)
 
-![alt image](/capturas/nmap.png)
+![alt image](capturas/nmap.png)
 
 ### 13.  Prueba a poner solo la regla de la cadena INPUT. ¿Funciona el servicio web? ¿Por qué?
 
@@ -139,7 +140,7 @@ sudo iptables -P FORWARD ACCEPT
 
 - Y ya podemos hacer pings
 
-![alt image](/capturas/pings.png)
+![alt image](capturas/pings.png)
 
 ### 15. Si queremos denegar que se pueda hacer un ping, ¿tendremos que hacer dos reglas INPUT y OUTPUT o solo con INPUT ya denegamos? ¿Por qué?
 
@@ -197,11 +198,11 @@ sudo iptables -P FORWARD ACCEPT
     ftp 192.168.2.158
 ```
 
-![alt image](/capturas/ftp.png)
+![alt image](capturas/ftp.png)
 
   Y en el nmap se ve el puerto ftp
 
-![alt image](/capturas/nmapftp.png)
+![alt image](capturas/nmapftp.png)
 
 ### 18. Haz que la configuración de iptables sea persistente al servidor. Comprueba reiniciando el servidor. Comprueba que las reglas iptables continúan existiendo. 
 
