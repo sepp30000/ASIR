@@ -1,0 +1,10 @@
+.text-center{
+    background-color: black;
+    color: antiquewhite;
+    padding: 2;
+}
+.footer {
+        background-color: #000; /* Fondo negro */
+        color: antiquewhite; /* Texto blanco */
+}
+

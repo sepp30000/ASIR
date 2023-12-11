@@ -1,0 +1,16 @@
+.text-center{
+    background-color: black;
+    padding: 2;
+    color: antiquewhite;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2;
+}
+
+.footer {
+    background-color: #000; /* Fondo negro */
+    color: antiquewhite; /* Texto blanco */
+}
