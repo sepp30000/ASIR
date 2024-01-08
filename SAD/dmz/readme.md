@@ -22,7 +22,7 @@ network:
 
 - Con esto tendremos la configuracion del netplan como router y la red de la **DMZ** y la **LAN**
 
-![alt image](/capturas/GNS3.png)
+![alt image](./capturas/GNS3.png)
 
 ## 1. Como ya solemos hacer, simularemos que Internet es la red del aula
 
