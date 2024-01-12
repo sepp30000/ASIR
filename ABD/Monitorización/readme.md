@@ -1,4 +1,25 @@
-# Herramientas de monitorizacion y optimizacion
+# PR5-1: Monitorización con sentencias sobre vistas del diccionario de datos
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+![Imagen](./Capturas/Oracle_Logo.jpg)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<center>José Ramón Peris</center>
+<center>Fecha: 10-10-2023</center>
+
+---
+
+<br>
 
 ## Muestra los parámetros generales de Oracle.
 ```sql
