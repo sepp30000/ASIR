@@ -144,4 +144,43 @@ Nos logueamos e intentamos enviar un email
 ![alt image](Capturas/envio%20de%20email.png)
 
 
+## SSL/TLS
 
+Con los certificados que tenemos creados, lo configuramos tanto el ***postfix*** como el ***dovecot***.
+
+- **POSTFIX**
+
+Main 
+```bash
+smtpd_use_tls = yes
+smtp_tls_mandatory_protocols = !SSLv2, !SSLv3
+smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
+smtpd_tls_cert_file = /etc/letsencrypt/live/mononginx.duckdns.org/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/mononginx.duckdns.org/privkey.pem
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+```
+
+Master
+
+```bash
+submission inet n       -       y       -       -       smtpd
+  -o syslog_name=postfix/submission
+#  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+```
+- **DOVECOT**
+
+10-ssl
+
+```bash
+ssl = yes
+
+ssl_cert = </etc/letsencrypt/live/mononginx.duckdns.org/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mononginx.duckdns.org/privkey.pem
+```
+
+Con esto ya podriamos probar la configuración en el **Thunderbird**.
+
+![alt image](Capturas/thunderbird.png)
+
+![alt image](Capturas/bandeja%20de%20entrada.png)
