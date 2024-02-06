@@ -56,8 +56,9 @@ def nuevosContratos():
             auxTel = ws_hoy.cell(row=fila_hoy_procesada,column=4).value
             auxMail = ws_hoy.cell(row=fila_hoy_procesada,column=5).value
             auxUID = ws_hoy.cell(row=fila_hoy_procesada,column=1).value
-            print(" * Contrato a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value )
             
+            print(" + Contrato a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value )
+            meta_script.write("# Contrato a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value +"\n")            
             meta_script.write("useradd -m -d \"/home/"+auxUser+"\" -s \"/bin/bash\" -u "+str(auxUID)+" -c \""+auxFull+", ,"+str(auxTel)+", ,"+auxMail+"\" \""+auxUser+"\"\n" )
             meta_script.write("echo \""+auxUser+":"+str(auxTel)+"\"| chpasswd \n")
             
@@ -71,6 +72,7 @@ def modificaciones():
     aux_id_hoy=ws_hoy.cell(row=1,column=1).value
     fila_hoy_procesada = 1
 
+    meta_script.write("\n# USUARIOS MODIFICADOS \n")
     while (aux_id_hoy != None):
         
         old_fila = 1
@@ -95,11 +97,26 @@ def modificaciones():
                         auxC = int(vCambiosUsuario[campoCambiado])+2
                         print("  --->   "+vCampos[vCambiosUsuario[campoCambiado]]+" : "+ ws_hoy.cell(row=fila_hoy_procesada,column=auxC).value)
                     #    print(" * "+vCampos[campoCambiado])
-                
+                    meta_script.write("# Modifico a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value +"\n")
+                    ccambio = vCampos[vCambiosUsuario[campoCambiado]]
+                    # print(ccambio)
+                    if ccambio == vCampos[0]:
+                        meta_script.write("# Modifico nombre usuario \n")
+                        meta_script.write("usermod -l "+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
+                    if ccambio == vCampos[1]:
+                        meta_script.write("# Modifico nombre completo \n")
+                        meta_script.write("chfn -f \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
+                    if ccambio == vCampos[2]:
+                        meta_script.write("# Modifico Teléfono \n")
+                        meta_script.write("chfn -r \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
+                    if ccambio == vCampos[3]:
+                        meta_script.write("# Modifico correo \n")
+                        meta_script.write("usermod -c \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
                 
             old_fila = old_fila + 1
             old_id = ws_ayer.cell(row=old_fila,column=1).value
-        
+            # meta_script.write("Modifico a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value )
+            
         # Siguiente linea mecanismo 
         fila_hoy_procesada = fila_hoy_procesada + 1
         aux_id_hoy = ws_hoy.cell(row=fila_hoy_procesada,column=1).value
