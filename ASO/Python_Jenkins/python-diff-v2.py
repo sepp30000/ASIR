@@ -97,22 +97,22 @@ def modificaciones():
                         auxC = int(vCambiosUsuario[campoCambiado])+2
                         print("  --->   "+vCampos[vCambiosUsuario[campoCambiado]]+" : "+ ws_hoy.cell(row=fila_hoy_procesada,column=auxC).value)
                     #    print(" * "+vCampos[campoCambiado])
-                    meta_script.write("# Modifico a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value +"\n")
-                    ccambio = vCampos[vCambiosUsuario[campoCambiado]]
-                    # print(ccambio)
-                    if ccambio == vCampos[0]:
-                        meta_script.write("# Modifico nombre usuario \n")
-                        meta_script.write("usermod -l "+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
-                    if ccambio == vCampos[1]:
-                        meta_script.write("# Modifico nombre completo \n")
-                        meta_script.write("chfn -f \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
-                    if ccambio == vCampos[2]:
-                        meta_script.write("# Modifico Teléfono \n")
-                        meta_script.write("chfn -r \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
-                    if ccambio == vCampos[3]:
-                        meta_script.write("# Modifico correo \n")
-                        meta_script.write("usermod -c \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
-                
+                        meta_script.write("# Modifico a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value +"\n")
+                        ccambio = vCampos[vCambiosUsuario[campoCambiado]]
+                        # print(ccambio)
+                        if ccambio == vCampos[0]:
+                            meta_script.write("# Modifico nombre usuario \n")
+                            meta_script.write("usermod -l "+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
+                        if ccambio == vCampos[1]:
+                            meta_script.write("# Modifico nombre completo \n")
+                            meta_script.write("chfn -f \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
+                        if ccambio == vCampos[2]:
+                            meta_script.write("# Modifico Teléfono \n")
+                            meta_script.write("chfn -r \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
+                        if ccambio == vCampos[3]:
+                            meta_script.write("# Modifico correo \n")
+                            meta_script.write("usermod -c \""+str(ws_ayer.cell(row=fila_hoy_procesada,column=auxC).value)+"\" "+str(ws_hoy.cell(row=fila_hoy_procesada,column=2).value)+"\n")
+                    
             old_fila = old_fila + 1
             old_id = ws_ayer.cell(row=old_fila,column=1).value
             # meta_script.write("Modifico a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value )
