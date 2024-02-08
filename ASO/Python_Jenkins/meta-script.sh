@@ -18,17 +18,32 @@ deluser aberlanas
 
 # NUEVOS CONTRATOS 
 # Contrato a Jose Guesser
-useradd -m -d "/home/jguesser" -s "/bin/bash" -u 5004 -c "Jose Guesser, ,123554422, ,timeguesser@champion.co.uk" "jguesser"
-echo "jguesser:123554422"| chpasswd 
+useradd -m -d "/home/jguesser" -s "/bin/bash" -u 5004 -c "Jose Guesser, ,1234422, ,timeguesser@champion.co.uk" "jguesser"
+echo "jguesser:1234422"| chpasswd 
 
 # USUARIOS MODIFICADOS 
+# Modifico a Adrian Pepino
+# Modifico Teléfono 
+chfn -r "6685858" apepino
 # Modifico a Lautaro Guapeton
 # Modifico nombre usuario 
-usermod -l lautarin lautarino
+usermod -l lautarino lautarino
 # Modifico a Lautaro Guapeton
 # Modifico nombre completo 
-chfn -f "Lautaro Feito" lautarino
+chfn -f "Lautaro Guapeton" lautarino
+# Modifico a Lautaro Guapeton
+# Modifico Teléfono 
+chfn -r "1223322" lautarino
+# Modifico a David Tanque
+# Modifico Teléfono 
+chfn -r "7449999" dtanke
+# Modifico a Viktor Thin
+# Modifico Teléfono 
+chfn -r "4562233" vthin
 # Modifico a Viktor Thin
 # Modifico correo 
-usermod -c "scriptingboy@powershell.ms" vthin
+usermod -c "scriptingman@shell.linux" vthin
+# Modifico a Jesus Papi
+# Modifico Teléfono 
+chfn -r "44553211" jmarchante
 exit 0
