@@ -108,7 +108,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name lauti2ngx.duckdns.org;
+    server_name mononginx.duckdns.org;
     server_tokens off;
 
     location /.well-known/acme-challenge/ {
@@ -127,10 +127,10 @@ server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
 
-    server_name lauti2ngx.duckdns.org;
+    server_name mononginx.duckdns.org;
 
-    ssl_certificate /etc/nginx/ssl/live/lauti2ngx.duckdns.org/fullchain.pem;
-    ssl_certificate_key /etc/nginx/ssl/live/lauti2ngx.duckdns.org/privkey.pem;
+    ssl_certificate /etc/nginx/ssl/live/mononginx.duckdns.org/fullchain.pem;
+    ssl_certificate_key /etc/nginx/ssl/live/mononginx.duckdns.org/privkey.pem;
 
     location / {
         root /var/www/certbot;
