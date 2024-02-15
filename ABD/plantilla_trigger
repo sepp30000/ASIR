@@ -1,0 +1,31 @@
+CREATE OR REPLACE TRIGGER nombre_trigger
+AFTER INSERT OR UPDATE OR DELETE ON nombre_tabla
+FOR EACH ROW
+DECLARE
+    aquí insertas las variables
+BEGIN
+    IF (INSERT,UPDATE,DELETE...) THEN
+    ELSE IF (INSERT,UPDATE,DELETE...) THEN
+    END IF;
+END;
+
+
+--Creación de vistas
+
+CREATE OR REPLACE VIEW t_v_nombredelatabla AS
+SELECT * FROM tabla;
+
+
+--Trigger INSTEAD OF
+CREATE OR REPLACE TRIGGER nombre_trigger
+INSTEAD OF INSERT ON nombre_vista
+FOR EACH ROW
+DECLARE
+    variables
+BEGIN
+    IF ... THEN
+    ELSE IF ... THEN
+    END IF;
+    
+END;
+/

@@ -111,3 +111,4 @@ Ahora añadimos los dashboards
 ![alt image](Capturas/hola.png)
 
 ![alt image](Capturas/node_explorer.png)
+ 

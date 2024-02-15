@@ -124,6 +124,7 @@ El permiso de creación de tablas, luego lo revocaremos.
 --Jose
 GRANT CREATE SESSION TO "jose"; 
 GRANT CONNECT TO "jose"; 
+GRANT DATABASE LINK TO "jose";
 GRANT SELECT ANY TABLE TO "jose"; 
 GRANT CREATE ANY TABLE TO "jose"; 
 GRANT DELETE ANY TABLE TO "jose"; 
@@ -244,3 +245,161 @@ PARTITION BY RANGE (NIA) (
 ![alt image](Capturas/Insercion_part.png)
 
 ![alt image](Capturas/funciona_select.png)
+
+
+## Creación de datalink y conexión a la base de datos del compañero
+
+```sql
+CREATE DATABASE LINK jose_viktor 
+CONNECT TO jose 
+IDENTIFIED BY "12345" 
+USING ' 
+(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP) 
+(HOST=192.168.2.224)(PORT=1521)) 
+(CONNECT_DATA=(SERVER=DEDICATED) 
+(SERVICE_NAME=XE)))'; 
+```
+
+![alt image](Capturas/Datalink.png)
+![alt image](Capturas/conexion%20datalink.png)
+
+### Creación tabla en la bbdd del compañero
+
+```sql
+CREATE TABLE ALUMNOS_ENRIC ( 
+    NIA NUMBER(8) PRIMARY KEY, 
+    dni VARCHAR2(9) , 
+    nombre VARCHAR2(20),  
+    ciudad VARCHAR2(15) DEFAULT 'Valencia',  
+    telefono NUMBER(9),  
+    ciclo VARCHAR2(20),  
+    nota NUMBER(3,1)
+);
+```
+
+![alt image](Capturas/tablacreadaviktor.png)
+![alt image](Capturas/tablajesusjose.png)
+![alt image](Capturas/tablalautarojose.png)
+
+
+### Hago un select de la creación de tablas de viktor
+
+```sql
+SELECT * FROM viktor.alumnos_viktor;
+```
+
+![alt image](Capturas/Select_viktor.png)
+
+
+## Creación de triggers
+
+### INSERT
+
+```sql
+CREATE OR REPLACE TRIGGER INSERTAR1 
+AFTER INSERT ON ALUMNOS  
+FOR EACH ROW  
+BEGIN  
+    IF :new.NIA < 20000000 THEN  
+       INSERT INTO ALUMNOS_ENRIC@jose_lautaro1  
+       VALUES (:new.NIA, :new.dni, :new.nombre, :new.ciudad, :new.telefono, :new.ciclo, :new.nota);  
+    ELSIF :new.NIA < 40000000 THEN   
+        INSERT INTO ALUMNOS_ENRIC@jose_viktor  
+        VALUES (:new.NIA, :new.dni, :new.nombre, :new.ciudad, :new.telefono, :new.ciclo, :new.nota);  
+    ELSE   
+        INSERT INTO ALUMNOS_ENRIC@jose_jesus  
+        VALUES (:new.NIA, :new.dni, :new.nombre, :new.ciudad, :new.telefono, :new.ciclo, :new.nota);  
+    END IF;  
+END;
+COMMIT;
+```
+![alt image](Capturas/captura%20trigger%20insertar.png)
+
+```sql
+INSERT INTO ALUMNOS (NIA, dni, nombre, ciudad, telefono, ciclo, nota) VALUES 
+    (10000022, '234567890', 'María', 'Barcelona', 987654321, 'Ciclo', 8.3); 
+    COMMIT;
+```
+![alt image](Capturas/insert_funciona.png)
+![alt image](Capturas/funciona_trigger.png)
+
+### UPDATE
+
+```sql
+CREATE OR REPLACE TRIGGER UPDATEAR  
+AFTER UPDATE ON ALUMNOS  
+FOR EACH ROW  
+BEGIN  
+    IF :new.NIA < 20000000 THEN  
+       UPDATE ALUMNOS_ENRIC@jose_lautaro1 SET  
+       NIA = :new.NIA,  
+       dni = :new.dni,  
+       nombre = :new.nombre,  
+       ciudad = :new.ciudad,  
+       telefono = :new.telefono,  
+       ciclo = :new.ciclo,  
+       nota = :new.nota  
+       WHERE NIA = :new.NIA;    
+   ELSIF :new.NIA < 40000000 THEN   
+    UPDATE ALUMNOS_ENRIC@jose_viktor SET  
+       NIA = :new.NIA,  
+       dni = :new.dni,  
+       nombre = :new.nombre,  
+       ciudad = :new.ciudad,  
+       telefono = :new.telefono,  
+       ciclo = :new.ciclo,  
+       nota = :new.nota  
+       WHERE NIA = :new.NIA;  
+    ELSE  
+        UPDATE ALUMNOS_ENRIC@jose_jesus SET  
+       NIA = :new.NIA,  
+       dni = :new.dni,  
+       nombre = :new.nombre,  
+       ciudad = :new.ciudad,  
+       telefono = :new.telefono,  
+       ciclo = :new.ciclo,  
+       nota = :new.nota  
+       WHERE NIA = :new.NIA;  
+    END IF; 
+   NULL;  
+END;  
+COMMIT;
+```
+
+```sql
+UPDATE alumnos SET ciclo='Patata' WHERE nia=10000002;
+COMMIT;
+```
+
+![alt image](Capturas/trigger_update.png)
+
+![alt image](Capturas/update_tabla_lautaro.png)
+
+![alt image](Capturas/update_talba%20mia.png)
+
+### DELETE
+
+```sql
+CREATE OR REPLACE TRIGGER DELETE_ALUMNOS  
+AFTER DELETE ON ALUMNOS  
+FOR EACH ROW  
+BEGIN  
+    IF :old.NIA < 20000000 THEN  
+        DELETE ALUMNOS_ENRIC@jose_lautaro1 WHERE NIA=:old.NIA;  
+    ELSIF :old.NIA < 40000000 THEN  
+            DELETE ALUMNOS_ENRIC@jose_viktor WHERE NIA=:old.NIA;  
+    ELSE  
+            DELETE ALUMNOS_ENRIC@jose_jesus WHERE NIA=:old.NIA;  
+    END IF; 
+NULL;  
+END;  
+COMMIT;
+```
+
+```sql
+DELETE alumnos WHERE ciclo='Patata';
+COMMIT;
+```
+
+![alt image](Capturas/Talbla%20delete.png)
+![alt image](Capturas/Funciona_delete.png)
