@@ -81,3 +81,19 @@ Ahora creamos un archivo en local y vemos que está creado en AWS
 ![alt image](Capturas/4.png)
 
 ![alt image](Capturas/5.png)
+
+## Prueba php
+
+Ahora vamos a hacer las pruebas con el php.
+
+```bash
+apt install php
+```
+
+Movemos el archivo de php
+
+![alt image](Capturas/6.png)
+
+Probamos que funciona
+
+![alt image](Capturas/7.png)
