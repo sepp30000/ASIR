@@ -27,12 +27,7 @@ chmod 777 /jenkins
 4. Creamos el contenedor de apache y comprobamos el que saca la web.
 
 ```bash
+docker run -v /home/sepp/jenkins:/var/www/html -name apache ubuntu/apache2
 ```
 
 ![alt image](Capturas/funcionasinphp.png)
-
-
-
-
-
-
