@@ -132,6 +132,10 @@ Cambia los usuarios
 
 ![alt image](Capturas/5.png)
 
+Mandado el PDF por telegram
+
+![alt image](Capturas/7.png)
+
 Y subido a GitHub
 
 ![alt image](Capturas/6.png)
