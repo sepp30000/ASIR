@@ -1,0 +1,80 @@
+
+            <html>
+              <head>
+                <style></style>
+              </head>
+              <body><h1>Reto 3: WebDav SSL</h1>
+<h2>Creamos el directorio WEBDAV</h2>
+<pre><code class="language-bash">mkdir /var/www/empresa/webdav
+chown www-data:www-data -R /var/www/empresa/webdav
+</code></pre>
+<h2>Activamos el modulo de WEBDAV</h2>
+<pre><code class="language-bash">a2enmod dav dav_fs
+sudo systemctl restart apache2.service 
+</code></pre>
+<h2>Añadimos la configuración de webdav</h2>
+<pre><code class="language-bash">&lt;VirtualHost *:80&gt;
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        ServerName http://mononginx.duckdns.org
+
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/empresa
+
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with &quot;a2disconf&quot;.
+        #Include conf-available/serve-cgi-bin.conf
+&lt;Directory &quot;/var/www/empresa/restringido&quot;&gt;
+        AuthType Digest
+        AuthName &quot;restringido&quot;
+        AuthUserFile &quot;/etc/apache2/contra.digest&quot;
+        Require valid-user
+&lt;/Directory&gt;
+DavLockDB /tmp/DavLock
+    &lt;Directory /var/www/empresa/webdav&gt;
+            dav on
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride None
+            AuthType digest
+            AuthUserFile &quot;/etc/apache2/contra.digest&quot;
+            AuthName &quot;restringido&quot;
+            Require valid-user
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+<h2>Probamos el funcionamiento</h2>
+<p>Desde el explorador de archivos (Dolphin en mi caso) nos conectaremos al WEBDAV</p>
+<p><img alt="alt image" src="Capturas/1.png" /></p>
+<p><img alt="alt image" src="Capturas/2.png" /></p>
+<p>Y vemos que está el archivo creado</p>
+<p><img alt="alt image" src="Capturas/3.png" /></p>
+<p>Ahora creamos un archivo en local y vemos que está creado en AWS</p>
+<p><img alt="alt image" src="Capturas/4.png" /></p>
+<p><img alt="alt image" src="Capturas/5.png" /></p>
+<h2>Prueba php</h2>
+<p>Ahora vamos a hacer las pruebas con el php.</p>
+<pre><code class="language-bash">apt install php
+</code></pre>
+<p>Movemos el archivo de php</p>
+<p><img alt="alt image" src="Capturas/6.png" /></p>
+<p>Probamos que funciona</p>
+<p><img alt="alt image" src="Capturas/7.png" /></p></body>
+            </html>
+            

@@ -31,11 +31,24 @@ meta_script.write("# IT WILL BE AUTOMAGICALLY GENERATED\n\n")
 meta_script.write("# Orig "+ruta_ayer+"\n")
 meta_script.write("# Dest "+ruta_hoy+"\n")
 
+# ELiminamos y creamos el md
+if os.path.exists("info.md"):
+    os.remove("info.md")
+    print(" * Create info.md")
+
+
+info = open("info.md", 'x')
+info.write("# Resultado de la ejecución del script meta-script.sh \n")
+
+
+
+
 def nuevosContratos():
     aux_id_hoy=ws_hoy.cell(row=1,column=1).value
     fila_hoy_procesada = 1
     
     meta_script.write("\n# NUEVOS CONTRATOS \n")
+    info.write("\n# NUEVOS CONTRATOS \n")
 
     while (aux_id_hoy != None):
         
@@ -61,7 +74,8 @@ def nuevosContratos():
             meta_script.write("# Contrato a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value +"\n")            
             meta_script.write("useradd -m -d \"/home/"+auxUser+"\" -s \"/bin/bash\" -u "+str(auxUID)+" -c \""+auxFull+", ,"+str(auxTel)+", ,"+auxMail+"\" \""+auxUser+"\"\n" )
             meta_script.write("echo \""+auxUser+":"+str(auxTel)+"\"| chpasswd \n")
-            
+            info.write("Añadimos a: " + str(ws_hoy.cell(row=fila_hoy_procesada, column=3).value) + "\n")
+
         
         # Siguiente linea mecanismo 
         fila_hoy_procesada = fila_hoy_procesada + 1
@@ -73,11 +87,12 @@ def modificaciones():
     fila_hoy_procesada = 1
 
     meta_script.write("\n# USUARIOS MODIFICADOS \n")
+    info.write("\n# USUARIOS MODIFICADOS \n")
     while (aux_id_hoy != None):
         
         old_fila = 1
         old_id = ws_ayer.cell(row=old_fila,column=1).value
-       
+
         vCambiosUsuario = []
         
         while (old_id != None):
@@ -93,10 +108,12 @@ def modificaciones():
                 if hayCambios:
                     print(ws_hoy.cell(row=fila_hoy_procesada, column=2).value + " ha cambiado : ")
                     print(vCambiosUsuario)
+                    info.write("\n El usuario: " + str(ws_hoy.cell(row=fila_hoy_procesada, column=2).value) + " ha cambiado en: \n")
                     for campoCambiado in range(0, len(vCambiosUsuario)):
                         auxC = int(vCambiosUsuario[campoCambiado]) + 2
                         # print("  --->   " + vCampos[vCambiosUsuario[campoCambiado]] + " : " + ws_hoy.cell(row=fila_hoy_procesada, column=auxC).value)
                         meta_script.write("# Modifico a " + ws_hoy.cell(row=fila_hoy_procesada, column=3).value + "\n")
+                        info.write("     " + vCampos[vCambiosUsuario[campoCambiado]] + " = " + str(ws_hoy.cell(row=fila_hoy_procesada, column=auxC).value)+"\n")
                         ccambio = vCampos[vCambiosUsuario[campoCambiado]]
                         print(ccambio)
                         if ccambio == vCampos[1]:
@@ -121,9 +138,11 @@ def modificaciones():
         aux_id_hoy = ws_hoy.cell(row=fila_hoy_procesada,column=1).value
 
 
+
 def despidos():
 
     meta_script.write("\n\n# DESPIDOS PROCEDENTES :  \n\n")
+    info.write("\n\n# DESPIDOS PROCEDENTES :  \n\n")
 
     aux_id_ayer=ws_ayer.cell(row=1,column=1).value
     fila_ayer_procesada = 1
@@ -143,6 +162,7 @@ def despidos():
         
         if despido :
             print(" * Despide a "+ws_ayer.cell(row=fila_ayer_procesada,column=3).value )
+            info.write(ws_ayer.cell(row=fila_ayer_procesada,column=3).value+" ha sido despedido."+"\n")
             
             meta_script.write("# Deleting "+ws_ayer.cell(row=fila_ayer_procesada,column=3).value+"\n")
             meta_script.write("deluser "+ws_ayer.cell(row=fila_ayer_procesada,column=2).value+"\n")
@@ -164,7 +184,6 @@ meta_script.write("exit 0\n")
 meta_script.close()
 
 sys.exit(0)
-
 
 
 
